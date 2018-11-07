@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学生信息</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		form{
+			width: 600px;
+			margin: 0 auto;
+			margin-top: 50px;
+		}
+		label{
+			display: block;
+		}
+		fieldset{
+			padding: 10px;
+		}
+		input,meter{
+			margin: 10px 0;
+			padding-left: 5px;
+			width: 100%;
+			height: 32px;
+			line-height: 32px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+		}
+		meter{
+			padding-left: 0;
+		}
+		.required{
+			color: #F09C01;
+		}
+		textarea{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>学生档案</legend>
+			<label for="username"><span class="required">*</span>姓名：</label>
+			<input type="text" placeholder="请输入姓名" name="username" autocomplete="off" id="username" autofocus required><br>
+			<label for="tel">手机号码：</label>
+			<input type="tel" name="phoneNumber" id="tel" pattern="^(\+86)?1\d{10}$" autocomplete="off" id="tel" placeholder="请输入手机号"><br>
+			<label for="email">邮箱地址：</label>
+			<input type="email" id="email" autocomplete="off" name="email" placeholder="example@email.com"><br>
+			<label for="school"><span class="required">*</span>所属学院：</label>
+			<input type="text" list="schools" id="school" placeholder="请选择" required><br>
+			<datalist id="schools">
+				<option value="文学院"></option>
+				<option value="经济学院"></option>
+				<option value="法学院"></option>
+				<option value="医学院"></option>
+				<option value="电子工程学院"></option>
+				<option value="艺术学院"></option>
+			</datalist>
+			<label for="score"><span class="required">*</span>入学成绩：</label>
+			<input type="number" min="0" max="500" value="0" id="score" required><br>
+			<label>基础水平：</label>
+			<meter max="500" min="0" low="280" high="360" value="0"></meter><br>
+			<label for="checkInDate">入学日期：</label>
+			<input type="date" name="checkInDate" id="checkInDate" required><br>
+			<label for="checkOutDate">毕业日期：</label>
+			<input type="date" name="checkOutDate" id="checkOutDate"><br>
+			<label for="bio">个人介绍：</label>
+			<textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+			<input type="submit" value="提交">
+		</fieldset>
+	</form>
+	<script type="text/javascript">
+		document.getElementById('tel').oninvalid = function() {
+			this.setCustomValidity("请输入11位手机号");
+		}
+		document.getElementById('score').onkeyup = function() {
+			document.getElementsByTagName('meter')[0].value = this.value;
+		}
+	</script>
+</body>
+</html>

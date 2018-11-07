@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>message board</title>
+	<!-- <link rel="stylesheet" href="./public/bootstrap.css"> -->
+	<link rel="stylesheet" media="(max-width: 500px)" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+	<div class="header container">
+		<div class="page-header">
+			<h1>Message Board <small>leave a message here</small></h1>
+			<a href="/post" class="btn btn-success">Leave a message</a><hr>
+		</div>
+	</div>
+	<div class="comments container">
+		<ul class="list-group">
+			{{each comments}}
+			<li class="list-group-item">{{ $value.name }} say: {{ $value.message }} <span class="float-right">{{ $value.dateTime }}</span></li>
+			{{/each}}
+		</ul>
+	</div>
+</body>
+</html>

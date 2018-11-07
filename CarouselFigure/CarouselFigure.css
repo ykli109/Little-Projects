@@ -1,0 +1,117 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+ul{
+	list-style: none;
+}
+
+html,
+body{
+	height: 100%;
+}
+
+
+#CarouselFigure{
+	position: relative;
+	top: 20%;
+	left: calc(50% - 280px);
+	width: 560px;
+	height: 300px;
+	overflow: hidden;
+	/*border: 10px solid #808080;*/
+}
+
+#CarouselFigure ul.figures{
+	position: absolute;
+	left: 0;
+	top: 0;
+	white-space: nowrap;
+	width: 10000px;
+	height: 300px;
+}
+
+#CarouselFigure ul a{
+	display: inline-block;
+	width:100%;
+	height: 100%;
+}
+
+#CarouselFigure li{
+	float: left;
+	width: 560px;
+	height: 300px
+}
+
+#CarouselFigure img{
+	width: 100%;
+	height: 100%;
+}
+#CarouselFigure ul.chooseButtons{
+	position: absolute;
+	width: auto;
+	height: auto;
+	/*z-index: 999;*/
+	right: 20px;
+	bottom: 10px;
+}
+
+#CarouselFigure ul.chooseButtons li{
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	color: #fff;
+	background-color: rgba(108,108,108,0.4);
+	margin-right: 2px;
+}
+
+#CarouselFigure ul.chooseButtons li.choosed{
+	background-color: #fff;
+	color: #000;
+	cursor: pointer;
+}
+
+#CarouselFigure .focus{
+	display: none;
+	position: absolute;
+	top: calc(50% - 25px);
+	width: 100%;
+	height: 50px;
+}
+
+#CarouselFigure .focus span{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-color: rgba(108,108,108,0.4);
+	line-height: 50px;
+	text-align: center;
+	color: rgba(255,255,255,0.7);
+	cursor: pointer;
+	font-size: 30px;
+}
+
+#CarouselFigure .focus .left{
+	float: left;
+}
+
+#CarouselFigure .focus .right{
+	float: right;
+}
+
+div.explain{
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	top: calc(20% + 300px);
+	width: 560px;
+	color: #333;
+}
+
+div.explain>h1{
+	position: absolute;
+	top: -350px;
+}

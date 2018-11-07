@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>slice carouse figure</title>
+	<link rel="stylesheet" href="SliceCarouselFigure.css">
+</head>
+<body>
+	<div class="layout">
+		<div class="container">
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+		</div>
+		<div class="focus">
+			<div class="left">&lt;</div>
+			<div class="right">&gt;</div>
+		</div>
+		<!-- 原理展示用 -->
+		<h3 style="position: relative;color: #00f;left: -100px;top: 50px;">点击展示原理：</h3>
+		<div class="container show">
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+		</div>
+	</div>
+	<script type="text/javascript" src="../public/jquery.js"></script>
+	<script type="text/javascript">
+		var index = 0;
+		var flag = true;
+		$("div.layout>.focus>.left").click(function(){
+			if(flag == true){
+				flag = false;
+				index++;
+				$("div.container>li").css("transform","rotateX("+index*90+"deg)")
+			}
+		})
+		$("div.layout>.focus>.right").click(function(){
+			if(flag == true){
+				flag = false;
+				index--;
+				$("div.container>li").css("transform","rotateX("+ (index*90)+"deg)")
+			}
+		})
+		setInterval(function() {
+			flag = true;
+		},1000);
+
+		//自动轮播
+		var autoTimer = setInterval(function() {
+			index--;
+			$("div.container>li").css("transform","rotateX("+ (index*90)+"deg)");
+		}, 2000);
+
+		$('div.layout').on('mouseover', function() {
+			$('div.layout>.focus').css('display','block')
+			clearInterval(autoTimer);
+		}).on('mouseout', function() {
+			$('div.layout>.focus').css('display','none')
+			autoTimer = setInterval(function() {
+				index--;
+				$("div.container>li").css("transform","rotateX("+ (index*90)+"deg)");
+			}, 2000);
+		})
+
+		$('h3').click(function() {
+			$('.container.show').toggle();
+		})
+	</script>
+</body>
+</html>

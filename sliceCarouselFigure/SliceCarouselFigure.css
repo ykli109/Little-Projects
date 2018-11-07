@@ -1,0 +1,121 @@
+<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		div.layout{
+			width: 560px;
+			height: 300px;
+			margin: 100px auto;
+			position: relative;
+		}
+		div.container{
+			width: 100%;
+			height: 100%;
+			transform-style: preserve-3d;
+			/*transform: rotate3d(-1,-1,-1,30deg);*/
+			position: relative;
+		}
+		div.container.show{
+			display: none;
+			margin-top: 100px;
+			transform: rotate3d(-1,1,-0.1,30deg);
+		}
+		div.container>li{
+			width: 20%;
+			height: 100%;
+			float: left;
+			transform-style: preserve-3d;
+			position: relative;
+		}
+		div.container>li:nth-of-type(1){
+			transition: transform 100ms  0;
+		}
+		div.container>li:nth-of-type(2){
+			transition: transform 100ms  100ms;
+		}
+		div.container>li:nth-of-type(3){
+			transition: transform 100ms  200ms;
+		}
+		div.container>li:nth-of-type(4){
+			transition: transform 100ms  300ms;
+		}
+		div.container>li:nth-of-type(5){
+			transition: transform 100ms  400ms;
+		}
+		div.container>li>span{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+		}
+		div.container>li:nth-of-type(1)>span{
+			background-position: 0 0;
+		}
+		div.container>li:nth-of-type(2)>span{
+			background-position: -100% 0;
+		}
+		div.container>li:nth-of-type(3)>span{
+			background-position: -200% 0;
+		}
+		div.container>li:nth-of-type(4)>span{
+			background-position: -300% 0;
+		}
+		div.container>li:nth-of-type(5)>span{
+			background-position: -400% 0;
+		}
+		div.container>li>span:nth-of-type(1){
+			background-image: url("images/q1.jpg");
+			transform: translateZ(150px);
+		}
+		div.container>li>span:nth-of-type(2){
+			background-image: url("images/q2.jpg");
+			transform: translateY(-150px) rotateX(90deg);
+			/*left: -100%;*/
+		}
+		div.container>li>span:nth-of-type(3){
+			background-image: url("images/q3.jpg");
+			transform: translateZ(-150px) rotateX(180deg);
+		}
+		div.container>li>span:nth-of-type(4){
+			background-image: url("images/q4.jpg");
+			transform: translateY(150px) rotateX(-90deg);
+		}
+		div.layout>.focus{
+			display: none;
+			width: 100%;
+			height: 50px;
+			position: absolute;
+			top:50%;
+			transform: translateY(-50%);
+			line-height: 50px;
+			text-align: center;
+			font-size: 24px;
+			color: #fff;
+		}
+		div.layout>.focus>.left{
+			width: 50px;
+			height: 100%;
+			float: left;
+			cursor: pointer;
+			background-color: rgba(0,0,0,0.5);
+		}
+		div.layout>.focus>.right{
+			width: 50px;
+			height: 100%;
+			float: right;
+			cursor: pointer;
+			background-color: rgba(0,0,0,0.5);
+		}
+		h3{
+			display: inline-block;
+		}
+		h3:hover{
+			cursor: pointer;
+			background-color: #888;
+		}
+	</style>

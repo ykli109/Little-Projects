@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="CarouselFigure.css">
+	<title>Carousel Figure</title>
+</head>
+<body>
+	<div id="CarouselFigure">
+		<ul class="figures">
+			<li><a href="#"><img src="images/q1.jpg" alt="figure1"></a></li>
+			<li><a href="#"><img src="images/q2.jpg" alt="figure2"></a></li>
+			<li><a href="#"><img src="images/q3.jpg" alt="figure3"></a></li>
+			<li><a href="#"><img src="images/q4.jpg" alt="figure4"></a></li>
+			<li><a href="#"><img src="images/q1.jpg" alt="figure5"></a></li>
+		</ul>
+		<ul class="chooseButtons">
+			<li class="choosed">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<div class="focus">
+			<span class="left">&lt;</span>
+			<span class="right">&gt;</span>
+		</div>
+	</div>
+	<div class="explain">
+		<h1>原生js实现轮播图</h1>
+		<p>打开页面，图片自动播放；将鼠标移到轮播图中，停止轮播，同时出现左右移动的焦点；鼠标移至目标序号，图片切换到对应序号的位置；鼠标移出，则恢复轮播；<b>解决chrome浏览器中，切换到其他页面再回来时，因为页面休眠的机制，轮播图功能发生错误的问题。</b></p>
+	</div>
+
+	<script type="text/javascript">
+
+		//元素移动方法，将elem元素移动到目标位置
+		function horizontalmoveTo(elem, targetPosition){
+			// 改用setTimeout实现
+			var move = function(){
+				var currentPosition = elem.offsetLeft;
+				var diff = currentPosition - targetPosition;
+				if(diff == 0){
+					return;
+				}
+				if(Math.abs(currentPosition-targetPosition) < 5){
+					elem.style.left = targetPosition + 'px';
+				}else{
+					var step = diff > 0 ? -5 : 5;
+					elem.style.left = currentPosition + step + 'px';
+				}
+				elem.timer = setTimeout(move, 5)
+			};
+			elem.timer = setTimeout(move, 5);
+		}
+
+		//解决setInterval休眠导致的bug
+		document.onvisibilitychange = function(){
+			if(document.visibilityState == 'hidden'){
+				for(var i = 0; i < 100000; i++){
+					clearInterval(i);
+				}
+			}
+			if(document.visibilityState == 'visible'){
+				timer = setInterval(autoMove,2000);
+				console.log(timer);
+			}
+		};
+	</script>
+	<script type="text/javascript">
+
+		//获取绑定事件相关的元素
+		var CarouselFigure = document.getElementById('CarouselFigure');
+		var CarouselFigureUl = CarouselFigure.getElementsByTagName('ul')[0];
+		var focus = document.getElementsByClassName('focus')[0];
+		var focusLeft = focus.getElementsByTagName('span')[0];
+		var focusRight = focus.getElementsByTagName('span')[1];
+		var chooseButtons = document.getElementsByClassName('chooseButtons')[0].children;
+
+		//获取移动宽度（即图片宽度）
+		var imgWidth = CarouselFigureUl.children[0].offsetWidth;
+
+		//切换过程中图片页码区域的切换方法
+		function setChoosedButton(index){
+			index = index ? index : Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
+			if(index > 3 || index < 0){
+				index = 0;
+			}
+			for(var i = 0; i < chooseButtons.length; i++){
+				chooseButtons[i].className = '';
+			}
+			chooseButtons[index].className = 'choosed';
+		}
+
+		//移除定时器方法
+		function clearTimer() {
+			var index = Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
+			clearInterval(timer);
+			clearInterval(CarouselFigureUl.timer);
+			index = (CarouselFigureUl.offsetLeft)/imgWidth%1 == 0 ? index: index +1
+			CarouselFigureUl.style.left = -(index)*560 + 'px';
+		}
+
+		//图片自动轮播
+		function autoMove(){
+			var index = Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
+			if(index >= 4){
+				CarouselFigureUl.style.left = '0px';
+				index = 0;
+			}
+			index++;
+			setChoosedButton(index);
+			horizontalmoveTo(CarouselFigureUl, -index*imgWidth);
+			timer = setTimeout(autoMove, 2000)
+		}
+		var timer = setTimeout(autoMove,2000);
+
+		//鼠标进入图片区域，轮播停止，显示左右移动焦点
+		CarouselFigure.onmouseenter = function(){
+			focus.style.display = 'block';
+			clearTimer();
+		}
+		//鼠标移出图片区域，轮播重新开始，失去左右移动焦点
+		CarouselFigure.onmouseleave = function(){
+			focus.style.display = 'none';
+			timer = setTimeout(autoMove,2000)
+		}
+
+		//绑定左边焦点的点击事件，使得图片左移
+		focusLeft.onclick = function(){
+			var index = Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
+			if(index >= 4){
+				CarouselFigureUl.style.left = "0px";
+				index = 0;
+			}
+			if(index > 0){
+				CarouselFigureUl.style.left = -(index-1)*560 + 'px';
+				setChoosedButton(index-1);
+			}
+		}
+
+		//绑定右边焦点点击事件，使得图片右移
+		focusRight.onclick = function(){
+			var index = Math.floor(-(CarouselFigureUl.offsetLeft)/imgWidth);
+			if(index == 4){
+				CarouselFigureUl.style.left = '0px';
+				index = 0;
+			}
+			if(index < 3){
+				CarouselFigureUl.style.left = -(index+1)*560 + 'px';
+				setChoosedButton(index+1);
+			}
+		}
+
+		//移动到对应页码，切换到对应图片
+		for(var i = 0; i < chooseButtons.length; i++){
+			chooseButtons[i].onmouseenter = function(){
+				var index = this.innerHTML - 1;
+				CarouselFigureUl.style.left = - index * imgWidth + 'px';
+				setChoosedButton(index);
+			}
+
+		}
+	</script>
+</body>
+</html>

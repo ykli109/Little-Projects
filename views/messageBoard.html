@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>message board</title>
+	<link rel="stylesheet" href="./public/bootstrap.css">
+</head>
+<body>
+	<div class="header container">
+		<div class="page-header">
+			<h1>Message Board <small>leave a message here</small></h1>
+			<a href="/messageBoard/post" class="btn btn-success">Leave a message</a><hr>
+		</div>
+	</div>
+	<div class="comments container">
+		<ul class="list-group">
+			{{each messages}}
+			<li class="list-group-item"><span style="color: #00f">{{ $value.name }}:</span> {{ $value.message }} <span class="float-right">{{ $value.dateTime }}</span></li>
+			{{/each}}
+		</ul>
+	</div>
+</body>
+</html>

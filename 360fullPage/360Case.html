@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>360Case</title>
+	<link rel="stylesheet" href="360Case.css">
+	<script type="text/javascript" src="/public/jquery.js"></script>
+	<script type="text/javascript" src="/public/jquery.fullPage.min.js"></script>
+</head>
+<body>
+	<div id="360page">
+		<div class="section first">
+			<div class="logo">
+				<img src="360images/logo.png" alt="logo">
+			</div>
+			<div class="text">
+				<img src="360images/text_1.png" alt="4">
+				<img src="360images/text_2.png" alt="亿">
+				<img src="360images/text_3.png" alt="网">
+				<img src="360images/text_4.png" alt="友">
+				<img src="360images/text_5.png" alt="共">
+				<img src="360images/text_6.png" alt="同">
+				<img src="360images/text_7.png" alt="信">
+				<img src="360images/text_8.png" alt="赖">
+			</div>
+			<div class="slogan">
+				<img src="360images/info_1.png" alt="info_1">
+			</div>
+		</div>
+		<div class="section second">
+			<div class="shield">
+				<img src="360images/shield_1.png" alt="1">
+				<img src="360images/shield_2.png" alt="2">
+				<img src="360images/shield_3.png" alt="3">
+				<img src="360images/shield_4.png" alt="4">
+				<img src="360images/shield_5.png" alt="5">
+				<img src="360images/shield_6.png" alt="6">
+				<img src="360images/shield_7.png" alt="7">
+				<img src="360images/shield_8.png" alt="8">
+				<img src="360images/shield_9.png" alt="9">
+			</div>
+			<div class="info2">
+				<img src="360images/info_2.png" alt="info2">
+			</div>
+		</div>
+		<div class="section third">
+			<div class="info3">
+				<img src="360images/info_3.png" alt="info3">
+			</div>
+			<div class="circle">
+				<img src="360images/circle.png" alt="圈">
+				<img class="rocket" src="360images/rocket.png" alt="rocket">
+			</div>
+		</div>
+		<div class="section fourth">
+			<div class="left">
+				<img class="search" src="360images/search.png" alt=search"">
+				<div class='key'>
+					<img src="360images/key.png" alt="key">
+				</div>
+				<img class="result" src="360images/result.png" alt="searchResult">
+			</div>
+			<div class="right">
+				<img src="360images/info_4.png" alt="">
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			$("#360page").fullpage({
+				sectionsColor:['#0da5d6', '#2AB561', '#DE8910', '#16BA9D', '#0DA5D6'],
+				afterLoad: function(anchorLink,index){
+					$(".section").removeClass('current');
+					setTimeout(function(){
+						$(".section").eq(index-1).addClass('current');
+					},0)
+				},
+			});
+		});
+	</script>
+</body>
+</html>

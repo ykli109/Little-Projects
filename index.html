@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>首页-导航</title>
+	<meta name="viewport" content="initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta name="Author" content="liyunkun"> 
+    <meta name="keywords" content="前端学习，html学习，css学习，框架学习">
+    <meta name="description" content="个人前端学习项目">
+	<link rel="stylesheet" href="public/main.css">
+	<script type="text/javascript" src="public/jquery.js"></script>
+</head>
+<body>
+	<div class="htmlCssStudy container">
+		<h1>CSS&HTML</h1>
+		<ul class="item-list">
+			<li><a href="sliceCarouselFigure/SliceCarouselFigure.html">切割轮播图-css3</a></li>
+			<li><a href="360fullPage/360Case.html">360主页全屏案例-css3</a></li>
+			<li><a href="html5FormCase_studentInformation.html">html5表单-学生信息</a></li>
+			<li><a href="xiechengTravel.html">css3flex布局-携程</a></li>
+		</ul>
+	</div>
+	<div class="javascriptStudy container">
+		<h1>JavaScript</h1>
+		<ul class="item-list">
+			<li><a href="CarouselFigure/CarouselFigure.html">轮播图-原生js</a></li>
+			<li><a href="gravityDropBalls/gravityDropBalls.html">弹性小球坠落-原生js</a></li>
+			<li><a href="rollCall/rollCall.html">随机点名系统-原生js</a></li>
+			<li><a href="SearchBox/SearchBox.html">搜索框-原生js</a></li>
+		</ul>
+	</div>
+	<div class="smallGames container">
+		<h1>小游戏</h1>
+		<ul class="item-list">
+			<li><a href="/2048">2048小游戏-原生js(兼容移动端)</a></li>
+		</ul>
+	</div>
+	<div class="applications container">
+		<h1>应用</h1>
+		<ul class="item-list">
+			<li><a href="/messageBoard">留言板</a></li>
+		</ul>
+	</div>
+	<div class="readme">
+		<a href="README.html">README</a>
+	</div>
+
+	<script>
+		$('.container').on('mouseenter', function() {
+			$(this).addClass('current').siblings().addClass('condence', );
+			$(this).children('h1').stop()
+				.animate({top: 0, marginTop: 5}, 400, "linear")
+			$(this).children('ul').stop()
+				.animate({top: 50}, 400, "linear")
+			$(this).find('li').stop()
+				.animate({marginTop: 10, marginBottom: 10}, 700, "linear")
+		});
+		$('.container').on('mouseleave', function() {
+			$(this).removeClass('current').siblings().removeClass('condence');
+			$(this).children('h1').stop()
+				.animate({top: '50%', marginTop: '-20px'}, 400, "linear")
+			$(this).children('ul').stop()
+				.animate({top: '100%'}, 400, "linear")
+			$(this).find('li').stop()
+				.animate({marginTop: 200, marginBottom: 200}, 700, "linear")
+		});
+		$('.readme').hover(function() {
+			$(this).animate({
+				width: 100,
+				height: 100,
+				marginLeft: -50,
+				marginTop: -50,
+				opacity: 0.8,
+			}, 300)
+			$(this).children('a').show();
+		}, function() {
+			$(this).animate({
+				width: 50,
+				height: 50,
+				marginLeft: -25,
+				marginTop: -25,
+				opacity: 0.4,
+			}, 300)
+			$(this).children('a').hide();
+		})
+	</script>
+</body>
+</html>

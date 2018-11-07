@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>rollcall</title>
+	<link rel="stylesheet" href="rollCall.css">
+</head>
+<body>
+	<div id="nameArea">
+		<ul id="nameList"></ul>
+	</div>
+	<div id="controlArea">
+		<ul id="controlButtonList">
+			<li class="controlButton"><input type="button" value="开始/暂停" id="start_stop"></li>
+			<li class="controlButton"><input type="button" value="点名一人" num=1 class="choosedButton"></li>
+			<li class="controlButton"><input type="button" value="点名两人" num=2></li>
+			<li class="controlButton"><input type="button" value="点名三人" num=3></li>
+			<li class="controlButton">添加/删除名字：<input type="text" id="aOdName"><input type="button" value="添加" id="addNewName"><input type="button" value="删除" id="deleteName"></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var nameList = ["李嘉诚", "王健林", "王石", "许家印", "王宝强","孙红雷","乔布斯","马斯克","雷军","马云","迪丽热巴","古力娜扎","佟丽娅","马化腾","李彦宏","赵宝刚","周杰伦","林俊杰","孙燕姿","王力宏"];
+		var ul = document.getElementById('nameList');
+		for(var i = 0; i < nameList.length; i++){
+			var li = document.createElement('li');
+			li.className = "name";
+			li.innerHTML = nameList[i];
+			ul.appendChild(li);
+		}
+	</script>
+	<script type="text/javascript">
+		//增加名字
+		document.getElementById("addNewName").onclick = function(){
+			var ul = document.getElementById('nameList')
+			var newName = document.getElementById('aOdName').value;
+			if(newName){
+				var li = document.createElement('li');
+				li.className = "name";
+				li.innerHTML = newName;
+				ul.appendChild(li);
+			}
+		}
+		//删除名字
+		document.getElementById("deleteName").onclick = function(){
+			var ul = document.getElementById('nameList')
+			var deleteName = document.getElementById('aOdName').value;
+			for(var i = 0; i < ul.children.length; i++){
+				var li = ul.children[i];
+				if(li.innerHTML == deleteName){
+					ul.removeChild(li);
+					break;
+				}
+			}
+		}
+		//设置点名人数
+		var inputs = document.getElementsByTagName('input');
+		var selectButton = [];
+		for(var i = 0; i < inputs.length; i++){
+			if(inputs[i].getAttribute('num')){
+				selectButton.push(inputs[i]);
+			}
+		}
+		for(var j = 0; j < selectButton.length; j++){
+			selectButton[j].onclick = function(){
+				for(var i = 0; i < selectButton.length; i++){
+					selectButton[i].className = '';
+				}
+				this.className = 'choosedButton';
+			}
+		}
+
+		//点击开始/暂停
+		var isStop = true;
+		var timer;
+		function callPerson(){
+			var choosedButton = document.getElementsByClassName('choosedButton')[0];
+			console.log(choosedButton);
+			var num = choosedButton.getAttribute('num');
+			console.log(num);
+			if(isStop){
+				timer = setInterval("callPersonFn(" + num + ")",10)
+				isStop = false;
+			}else{
+				clearInterval(timer);
+				isStop = true;
+			}
+		}
+		function callPersonFn(num){
+			var nameList = document.getElementsByClassName('name');
+			var nameNum = nameList.length;
+			for(var i = 0; i < nameNum; i++){
+				nameList[i].className = 'name';
+			}
+			randomNum = []
+			var j = 0;
+			while(j < num){
+				var random = Math.floor(nameNum*Math.random())
+				if(randomNum.indexOf(random) < 0){
+					randomNum.push(random);
+					nameList[random].className = 'name choosedName';
+					j++;
+				}
+			}
+
+		}
+		document.getElementById('start_stop').onclick = callPerson;
+	</script>
+</body>
+</html>

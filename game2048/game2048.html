@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2048</title>
+	<link rel="stylesheet" href="game2048.css">
+</head>
+<body>
+	<div id="touchArea"></div>
+	<header>
+		<h1>2048</h1>
+		<p id="restart">重新开始</p>
+		<p>分数：<span id="score">0</span></p>
+	</header>
+	<section class="container">
+		<table class="board">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+<!-- 		<table id="history">
+			<thead>
+				<td>用户</td>
+				<td>分数</td>
+				<td>时间</td>
+			</thead>
+			<tbody>
+				{{each scores}}
+				<tr>
+					<td>{{ $value.user }}</td>
+					<td>{{ $value.score }}</td>
+					<td>{{ $value.time }}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table> -->
+		<section class="endGame">游戏结束</section>
+		<section class="endGame restart">重新开始</section>
+	</section>
+	<table id="history">
+			<thead>
+				<td>用户</td>
+				<td>分数</td>
+				<td>时间</td>
+			</thead>
+			<tbody>
+				{{each scores}}
+				<tr>
+					<td>{{ $value.user }}</td>
+					<td>{{ $value.score }}</td>
+					<td>{{ $value.time }}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	<script type="text/javascript" src="game2048.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+.section{
+	position: relative;
+	overflow: hidden;
+}
+
+/*第一屏*/
+.section.first .logo{
+	width: 100%;
+	margin: 0 auto;
+	padding: 100px 0;
+	text-align: center;
+}
+
+
+.section.first .text{
+	width: 100%;
+	 min-width:  1200px;
+	text-align: center;
+}
+.section.first .text>img{
+	margin: 0 25px;
+	opacity: 0.2;
+}
+.section.first.current .text>img{
+	margin: 0 10px;
+	opacity: 1;
+	transition: margin 1s linear, opacity 1s linear;
+}
+
+.section.first .slogan{
+	width: 100%;
+	margin: 0 auto;
+	padding: 50px 0;
+	text-align: center;
+}
+
+/*第二屏*/
+.section.second{
+	position: relative;
+}
+
+.section.second .shield{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-110%, -50%);
+	width: 450px;
+	font-size: 0;
+}
+.section.second .info2{
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(110%, -50%);
+}
+.section.second.current .shield img:nth-of-type(n){
+	transform: none;
+	transition: transform 0.5s linear;
+}
+.section.second .shield img:nth-of-type(1){
+	transform: translate(-100px,-100px) rotate(30deg);
+}
+.section.second .shield img:nth-of-type(2){
+	transform: translate(0px,-100px) rotate(80deg);
+}
+.section.second .shield img:nth-of-type(3){
+	transform: translate(100px,-100px) rotate(90deg);
+}
+.section.second .shield img:nth-of-type(4){
+	transform: translate(-100px,0px) rotate(-30deg);
+}
+.section.second .shield img:nth-of-type(5){
+	transform: translate(0px,0px) rotate(-60deg);
+}
+.section.second .shield img:nth-of-type(6){
+	transform: translate(100px,0px) rotate(75deg);
+}
+
+.section.second .shield img:nth-of-type(7){
+	transform: translate(-100px,100px) rotate(90deg);
+}
+.section.second .shield img:nth-of-type(8){
+	transform: translate(0px,100px) rotate(110deg);
+}
+.section.second .shield img:nth-of-type(9){
+	transform: translate(100px,100px) rotate(120deg);
+}
+
+/*第三屏*/
+.section.third{
+	position: relative;
+	overflow: hidden;
+}
+
+.section.third .info3{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-100%, -50%);
+}
+
+.section.third .circle{
+	position: absolute;
+	right: 50%;
+	top: 50%;
+	transform: translate(120%, -50%);
+}
+
+.section.third.current .circle .rocket{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transition: left 1s, top 1s;
+}
+
+.section.third .circle .rocket{
+	position: absolute;
+	left: -500px;
+	top: 800px;
+	transform: translate(-50%,-50%);
+}
+
+/*第四屏*/
+.section.fourth{
+	position: relative;
+}
+
+.section.fourth .left{
+	width: 529px;
+	height: 460px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-110%, -50%);
+	overflow: hidden;
+}
+
+.section.fourth .left .search{
+	position: relative;
+	left: -100%;
+	top: 0;
+}
+.section.fourth.current .left .search{
+	left: 0;
+	transition: left 1s;
+}
+.section.fourth .left .key{
+	position: absolute;
+	left: 22px;
+	top: 22px;
+	width: 0px;
+	height: 22px;
+	overflow: hidden;
+}
+.section.fourth.current .left .key{
+	width: 99px;
+	transition: width 1s steps(5) 1s;
+}
+
+.section.fourth .left .result{
+	position: absolute;
+	left: 0;
+	top: 54px;
+	width: 529px;
+	height: 0;
+}
+.section.fourth.current .left .result{
+	height: 372px;
+	transition: height 1s 2.2s;
+}
+
+
+.section.fourth .right{
+	position: absolute;
+	right: 50%;
+	top: 50%;
+	transform: translate(110%, -50%);
+}

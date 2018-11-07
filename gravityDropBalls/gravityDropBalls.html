@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Gravity Drop Balls</title>
+	<link rel="stylesheet" href="gravityDropBalls.css">
+</head>
+<body>
+	<!-- 重力加速度 -->
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div id="ground"></div>
+	<input type="button" value="drop" id="dropButton">
+	<input type="button" value="reset" id="resetButton">
+	<script type="text/javascript">
+		var ball = document.getElementsByClassName('ball');
+		var ground = document.getElementById('ground');
+		var dropButton = document.getElementById('dropButton');
+		var resetButton = document.getElementById('resetButton');
+		dropButton.addEventListener('click', drop, false);
+		resetButton.addEventListener('click', reset, false);
+
+		for(let i = 0; i < ball.length; i++){
+			ball[i].style.left = 300 + 250*i + 'px';
+		}
+		var timer = [];
+		var timer2 = [];
+		var velocity = [];
+		var state = 'stop';
+
+		function clearAllTimer(){
+			timer.sort(function(a,b){return a-b;});
+			timer2.sort(function(a,b){return a-b;});
+			var maxTimerId = Math.max(timer[timer.length-1],timer2[timer2.length-1]);
+			for(let i = 1; i <= maxTimerId; i++){
+				clearInterval(i);
+			}
+		}
+		function drop() {
+			if(state === 'droping'){return;}
+			state = 'droping';
+			clearAllTimer();
+			for(let i = 0; i < ball.length; i++){
+				velocity[i] = 0;
+				timer2[i] = setTimeout(function(){
+					timer[i] = setInterval(function(){
+						velocity[i] = velocity[i] + 0.8;
+						if (velocity[i] > -1 && velocity[i] < 0) {velocity[i] = 0};
+						var top = (top || ball[i].offsetTop) + velocity[i];
+						if(ground.offsetTop - top > ball[i].offsetHeight){
+							ball[i].style.top = top + 'px';
+						}else{
+							ball[i].style.top = ground.offsetTop - ball[i].offsetHeight +'px';
+
+							if (velocity[i] < 10) {
+								velocity[i] = -0.99 * velocity[i];
+							}
+							else {
+								velocity[i] = -0.96*(velocity[i]);
+							}
+
+							if(velocity[i] === 0 && ball[i].offsetTop === 0){
+								clearInterval(timer[i]);
+							}
+						}
+					},20)
+				},1000*i)
+			}
+
+		}
+		function reset(){
+			state = 'stop';
+			clearAllTimer();
+			for(let i = 0; i < ball.length; i++){
+				ball[i].style.top = '0px';
+			}
+		}
+	</script>
+</body>
+</html>

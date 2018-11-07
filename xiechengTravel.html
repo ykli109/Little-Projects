@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>携程网</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		div.container{
+			width: 100%;
+		}
+		header{
+			width: 100%;
+		}
+		header>a>img{
+			width: 100%;
+		}
+		main{
+			width: 100%;
+		}
+		main>section.content{
+			width: calc(100% - 20px);
+			display: flex;
+			height: 100px;
+			margin: 10px;
+			border-radius: 10px;
+			background-color: #ccc;
+		}
+		main>section.content:nth-of-type(1){
+			background-color: #57c3ae;
+		}
+		main>section.content:nth-of-type(2){
+			background-color: #33aa46;
+		}
+		main>section.content:nth-of-type(3){
+			background-color: #aa4b40;
+		}
+		main>section.content:nth-of-type(4){
+			background-color: #445faa;
+		}
+		main>section>div.left{
+			flex: 1;
+			height: 100%;
+		}
+		main>section>div.right{
+			flex: 2;
+			height: 100%;
+		}
+		main>section>div.right>li{
+			float: left;
+			width: 50%;
+			height: 50%;
+			line-height: 50px;
+			text-align: center;
+			box-sizing: border-box;
+			border: 1px solid #fff;
+		}
+		main>section>div.right>li>a{
+			text-decoration: none;
+			color: #fff;
+		}
+		main>section.extra{
+			width: 100%;
+			margin: 10px;
+			display: flex;
+		}
+		main>section.extra>img{
+			flex: 1;
+		}
+		footer{
+			width: 100%;
+		}
+		footer>nav{
+			width: 100%;
+			height: 36px;
+			border: 1px solid #ccc;
+			display: flex;
+		}
+		footer>nav>a{
+			flex: 1;
+			height: 36px;
+			line-height: 36px;
+			text-align: center;
+			color: #888;
+		}
+		footer>p{
+			width: 100%;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<a href="#"><img src="banner.jpg" alt="携程网"></a>
+		</header>
+		<main>
+			<section class="content">
+				<div class="left"></div>
+				<div class="right">
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+				</div>
+			</section>
+			<section class="content">
+				<div class="left"></div>
+				<div class="right">
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+				</div>
+			</section>
+			<section class="content">
+				<div class="left"></div>
+				<div class="right">
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+				</div>
+			</section>
+			<section class="content">
+				<div class="left"></div>
+				<div class="right">
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+					<li><a href="#">海外酒店</a></li>
+				</div>
+			</section>
+			<section class="extra">
+				<img src="images/extra_1.png" alt="签到领积分">
+				<img src="images/extra_2.png" alt="特卖会">
+			</section>
+		</main>
+		<footer>
+			<nav>
+				<a href="#"><li>电话预定</li></a>
+				<a href="#"><li>下载客户端</li></a>
+				<a href="#"><li>我的订单</li></a>
+			</nav>
+			<p>
+				<a href="#">网站地图</a>
+				<a href="#">ENGLISH</a>
+				<a href="#">电脑版</a>
+			</p>
+			<p class="information">©2015 携程旅行</p>
+		</footer>
+	</div>
+</body>
+</html>

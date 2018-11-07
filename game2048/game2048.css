@@ -1,0 +1,148 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	user-select: none;
+}
+
+header{
+	margin-top: 100px;
+	text-align: center;
+}
+
+#restart{
+	width: 80px;
+	margin: 0 auto;
+	background-color: #666;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+}
+
+#restart:active{
+	font-weight: bold;
+	color: #666;
+	background-color: #fff;
+}
+
+.container{
+	margin: 0 auto;
+	margin-top: 20px;
+	position: relative;
+}
+
+table.board{
+	position: relative;
+	background-color: #555;
+	border-spacing: 5px;
+	margin: 0 auto;
+	font-size: 35px;
+	font-weight: bold;
+	color: #eee;
+}
+
+table.board td{
+	width: 70px;
+	height: 70px;
+	background-color: #aaa;
+	border-radius: 5px;
+}
+
+table.board td>p{
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	text-align: center;
+	background-color: #888;
+	border-radius: 5px;
+}
+
+table.board td>p.small{
+	font-size: 35px;
+	background-color: #888;
+}
+table.board td>p.medium{
+	font-size: 35px;
+	background-color: #777;
+}
+table.board td>p.large{
+	font-size: 32px;
+	background-color: #666;
+}
+table.board td>p.num512{
+	font-size: 32px;
+	background-color: #444;
+}
+table.board td>p.num1024{
+	font-size: 24px;
+	background-color: #333;
+}
+table.board td>p.num2048{
+	font-size: 24px;
+	background-color: #222;
+}
+table.board td>p.num4096{
+	font-size: 24px;
+	background-color: #111;
+}
+table.board td>p.extraLarge{
+	font-size: 24px;
+	background-color: #000;
+}
+
+
+.endGame{
+	display: none;
+	position: relative;
+	margin: 0 auto;
+	margin-top: -200px;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #222;
+	color: #fff;
+	z-index: 999;
+	border-radius: 5px;
+}
+
+.endGame.restart{
+	cursor: pointer;
+	margin-top: 10px;
+	margin-bottom: 150px;
+}
+
+.endGame.restart:active{
+	font-weight: bold;
+}
+
+table#history{
+	margin: 0 auto;
+	margin-top:50px;
+	margin-bottom: 20px;
+	list-style: none;
+	border: 1px solid black;
+	border-spacing: 10px;
+}
+
+table#history thead{
+	font-weight: bold;
+}
+
+table#history td{
+	width: 150px;
+	text-align: center;
+}
+
+#touchArea{
+	width: 80%;
+	height: 900px;
+	margin: 0 auto;
+	background-color: rgba(200,200,200,0.08);
+	z-index: 100;
+}

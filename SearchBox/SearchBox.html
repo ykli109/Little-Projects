@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BaiduSearchBox</title>
+	<link rel="stylesheet" href="SearchBox.css">
+</head>
+<body>
+	<div id="SearchBox">
+		<div id="inputArea">
+			<input type="text" value="请输入搜索内容" id="inputText">
+			<div id="recommendBox"></div>
+		</div>
+		<input type="button" value="搜索" id="searchClick">
+	</div>
+	<script type="text/javascript">
+		var dataList = ['一如既往','一贫如洗','一心一意','一针见血','二龙戏珠',
+		'三心二意','三长两短']
+	</script>
+	<script type="text/javascript">
+		var input = document.getElementById('inputText');
+		input.onfocus = function(){
+			if(this.value == '请输入搜索内容'){
+				this.value = '';
+				this.style.color = "black";
+			}
+		}
+		input.onblur = function(){
+			var data = input.value
+			var isInput = false;
+			for(var i = 0; i < data.length; i++){
+				if(data[i] != ' '){
+					isInput = true;
+					break;
+				}
+			}
+			if(this.value == '' || !isInput){
+				this.value = '请输入搜索内容';
+				this.style.color = "#808080";
+			}
+			setTimeout("recommendBox.style.display = 'none';",200);
+		}
+		var recommendBox = document.getElementById('recommendBox');
+		input.onkeyup = function(){
+			recommendBox.innerHTML = '';
+			recommendBox.style.display = 'none';
+			var data = this.value;
+			if(data == '' || data == '请输入搜索内容'){
+				return;
+			}
+			for(var i = 0; i < dataList.length; i++){
+				if(dataList[i].indexOf(data) == 0){
+					var p = document.createElement('p');
+					p.className = 'searchRecommend'
+					p.innerHTML = dataList[i];
+					recommendBox.appendChild(p);
+				}
+			}
+			recommendBox.style.display = 'block';
+			for(var i = 0; i < searchRecommend.length; i++){
+				searchRecommend[i].addEventListener('click',searchRecommendClickHandle,false);
+		}
+		}
+		var searchRecommend = recommendBox.getElementsByTagName('p');
+		function searchRecommendClickHandle(e){
+			var event = e||window.event;
+			event.cancelBubble = 'true';
+			input.value = this.innerHTML;
+			recommendBox.style.display = 'none';
+		}
+		document.getElementById('searchClick').onclick = function(){
+			var data = input.value;
+			if(data != '' || data != "请输入搜索内容"){
+				window.location.href = "https://www.baidu.com/s?wd=" + input.value;
+			}
+		}
+	</script>
+</body>
+</html>
