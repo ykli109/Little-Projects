@@ -1,3 +1,4 @@
+> 这是一个校19年校招学习前端时做的一个小项目，所有的实现都基于原声html，js，css，不涉及前端框架。项目部署地址：[practices.liyunkun.com](http://practices.liyunkun.com)
 # 网站介绍
 网站中主要包含平时学习前端过程中做的一些小案例或者小项目。网站搭建在centOS平台，网站的服务是基于nodejs的express框架来实现的，使用pm2命令行工具来守护进程。
 ## 客户端应用
