@@ -1,0 +1,28 @@
+{
+  "name": "little-projects",
+  "version": "1.0.0",
+  "description": "> 这是一个校19年校招学习前端时做的一个小项目，所有的实现都基于原声html，js，css，不涉及前端框架。项目部署地址：[practices.liyunkun.com](http://practices.liyunkun.com)\r # 网站介绍\r 网站中主要包含平时学习前端过程中做的一些小案例或者小项目。网站搭建在centOS平台，网站的服务是基于nodejs的express框架来实现的，使用pm2命令行工具来守护进程。\r ## 客户端应用\r 指的只是通过服务器一次性发送HTML, CSS, JavaScript文件等页面需要的文件，页面中不涉及与服务器的交互。\r ### 1. 轮播图-原生js\r - 页面功能：\r \t+ 打开页面后，会默认循环播放图片\r \t+ 当鼠标移动到图片上，会立刻切换到当前页面，并且停止循环播放，同时出现左右移动图片的焦点。\r \t+ 点击左右焦点时，图片会显示上一张或下一张\r \t+ 当鼠标移到右下角图片序号处，图片会切换到序号所对应的图片\r \t+ 鼠标离开页面，从当前位置开始恢复循环播放的效果\r - 涉及到的前端知识\r \t+ 通过setInterval定时器封装动画的逻辑\r \t+ 通过DOM提供的API来操作来控制页面元素的布局与显示方式\r \t+ DOM API `onvisibilitychange` 和 `visibilityState` 的使用。\r - 遇到的问题及原因与解决方法\r \t+ 在图片循环播放的动画过程中，无法准确移动到目标，导致在目标位置两边”抖动“。\r \t\t**原因：**封装动画函数的时候，由于步进的设置时一固定值，当当前位置与目标位置小于步进值得时候，就无法达到目标。\r \t\t**解决：**在出现这种得情况下，往往时目标位置与当前位置非常接近得时候，通过判断两个位置得差值，当小于步进时，直接将下一位置设置为目标位置即可。\r \t+ 在chrome浏览器中，切换到其他页面，再回到当前页面时，轮播图得功能就会发生错误。\r \t\t**原因：**chrome浏览器得休眠机制决定，当页面切换到后台，定时器会存入事件队列且不在执行，当再次切换回来时，多个定时器任务同时触发，导致页面出错。\r \t\t**解决：**通过DOM提供得`onvisibilitychange` 和 `visibilityState` 监测页面状态，当页面隐藏时，清除所有定时器；当页面切换回来时，自动恢复轮播效果得定时器。",
+  "main": "index.js",
+  "dependencies": {
+    "art-template": "^4.12.2",
+    "bootstrap": "^4.1.2",
+    "express": "^4.16.3",
+    "express-art-template": "^1.0.1",
+    "mongoose": "^5.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm run stop && pm2 start pm2.config.js",
+    "stop": "pm2 delete pm2.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykli109/Little-Projects.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ykli109/Little-Projects/issues"
+  },
+  "homepage": "https://github.com/ykli109/Little-Projects#readme"
+}
